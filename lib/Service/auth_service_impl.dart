@@ -42,17 +42,28 @@ class AuthServiceImpl implements IAuthService {
 
   @override
   Future<String> signUp({
-    required String username,
-    required String email,
     required String password,
+    required String name,
+    required String gender,
+    required DateTime dateofbirth,
+    required String email,
   }) async {
     String body = jsonEncode({
-      "userName": username,
-      "email": email,
       "password": password,
+      "status": 1,
+      "user": {
+        "name": name,
+        "gender": gender,
+        "dateofBirth": dateofbirth.toIso8601String(),
+        "email":email,
+        "role": {
+          "id": 1,
+          "name": "user"
+        }
+      }
     });
 
-    Response response = await httpClient.post("auth/signup", body);
+    Response response = await httpClient.post("account", body);
 
     if (response.statusCode == 200) {
       dynamic jsonDecoded = jsonDecode(response.body);
@@ -83,4 +94,7 @@ class AuthServiceImpl implements IAuthService {
       throw Exception("Error");
     }
   }
+
+
+
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:online_shop/Screen/home_screen.dart';
+import 'package:online_shop/Screen/signup_screen.dart';
 import 'package:online_shop/get_it.dart';
 import '../Service/auth_service.dart';
 import '../constants.dart';
@@ -141,7 +142,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                 Navigator.push(context, MaterialPageRoute(
                                   builder: (context) {
                                     // return SignUpScreen();
-                                    return HomeScreen();
+                                    return SignUpScreen();
                                   },
                                 ));
                               },

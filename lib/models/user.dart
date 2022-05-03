@@ -2,12 +2,15 @@ class UserModel {
   int id;
   String name;
   String email;
-  // String gender;
+  String gender;
+  DateTime dateofbirth;
   // int roleid;
 
   UserModel({
     required this.id,
     required this.name,
+    required this.gender,
+    required this.dateofbirth,
     required this.email,
     // required this.gender,
     // required this.roleid,
@@ -17,6 +20,8 @@ class UserModel {
     return UserModel(
       id: json['id'],
       name: json['name'],
+      gender: json['gender'],
+      dateofbirth: json["dateofbirth"],
       email: json['email'],
       // gender:  json['gender'],
       // roleid: json['roleid'],

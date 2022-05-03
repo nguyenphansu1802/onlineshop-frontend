@@ -25,7 +25,7 @@ class _HomeState extends State<Home> {
       backgroundColor: Colors.white,
       elevation: 0,
       leading: IconButton(
-        icon: Icon(Icons.supervised_user_circle, color: Colors.black54,size: 30,),
+          icon: Icon(Icons.supervised_user_circle, color: Colors.black54,size: 30,),
         onPressed: () {},
       ),
       actions: <Widget>[
