@@ -1,5 +1,5 @@
 import 'package:online_shop/models/BaseObject.dart';
-import 'package:online_shop/models/user.dart';
+import 'package:online_shop/models/User.dart';
 
 class AccountModel extends BaseObject{
 
@@ -7,7 +7,7 @@ class AccountModel extends BaseObject{
   String status;
   UserModel user;
   AccountModel({
-    required id,
+    id,
     required this.password,
     required this.status,
     required this.user,

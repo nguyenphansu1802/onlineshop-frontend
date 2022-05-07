@@ -1,4 +1,5 @@
-import '../models/user.dart';
+import '../models/Account.dart';
+import '../models/User.dart';
 
 abstract class IAuthService {
   Future<UserModel?> signIn({
@@ -10,7 +11,16 @@ abstract class IAuthService {
     required String username,
     required String password,
   });
-  Future<String> signUp({
+
+  @override
+  Future<AccountModel?> signUp({
+    required UserModel user,
+    required AccountModel account,
+
+  });
+
+  @override
+  Future<AccountModel?> signUp3({
     required String password,
     required String name,
     required String gender,

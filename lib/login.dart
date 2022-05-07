@@ -3,7 +3,7 @@ import 'dart:convert';
 // import 'package:flutter/cupertino.dart';
 // import 'package:flutter/material.dart';
 // import 'package:google_fonts/google_fonts.dart';
-// import 'package:online_shop/models/user.dart';
+// import 'package:online_shop/models/User.dart';
 // import 'package:http/http.dart' as http;
 // class Login extends StatefulWidget{
 //   const Login({Key? key}) : super(key: key);

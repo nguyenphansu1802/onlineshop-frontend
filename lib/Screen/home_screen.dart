@@ -18,11 +18,11 @@ class _HomeApp2State extends State<HomeApp2> {
   double valueKm = 0;
   // List<UserModel>? restaurantList;
 
-  @override
-  void initState() {
-    super.initState();
-    // getAllRestaurant();
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   // getAllRestaurant();
+  // }
 
   // getAllRestaurant() async {
   //   final getItInstance = getIt<IAuthService>();
@@ -52,123 +52,123 @@ class _HomeApp2State extends State<HomeApp2> {
               padding: const EdgeInsets.symmetric(horizontal: 60.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      (size.width < 900)
-                          ? Material(
-                        color: Colors.transparent,
-                        borderRadius: BorderRadius.circular(50),
-                        child: InkWell(
-                          onTap: () {},
-                          borderRadius: BorderRadius.circular(50),
-                          child: Container(
-                            height: 45,
-                            width: 45,
-                            decoration: BoxDecoration(
-                              color: Colors.black,
-                              borderRadius: BorderRadius.circular(6.0),
-                            ),
-                            alignment: Alignment.center,
-                            child: Icon(Icons.menu, color: Colors.white),
-                          ),
-                        ),
-                      )
-                          : Container(
-                        width: 350,
-                        child: const TextField(
-                          style: TextStyle(fontSize: 12),
-                          decoration: InputDecoration(
-                            hintText: "Enter your search request...",
-                            prefixIcon: Padding(
-                              padding:
-                              EdgeInsets.fromLTRB(10, 5, 0, 0),
-                              child: FaIcon(
-                                FontAwesomeIcons.search,
-                                size: 16,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Spacer(),
-                      CustomCircleButton(
-                        icon: FontAwesomeIcons.slidersH,
-                        onTap: () {},
-                      ),
-                      const SizedBox(width: 10),
-                      CustomTextButton(
-                        onTap: () {},
-                        text: "Go to Premium",
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 50),
-                  Row(
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Find the best place",
-                            style: largestText,
-                          ),
-                          RichText(
-                            text: TextSpan(
-                              style: GoogleFonts.montserrat(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w500,
-                              ),
-                              children: [
-                                TextSpan(text: "249 restaurants, "),
-                                TextSpan(
-                                  text: "choose yours",
-                                  style: GoogleFonts.montserrat(
-                                    fontSize: 12,
-                                    color: Colors.grey.shade600,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                      const Spacer(),
-                      if (size.width > 590) const SpecialAndCategoriesCounter(),
-                    ],
-                  ),
-                  if (size.width <= 590) ...[
-                    const SizedBox(height: 30),
-                    const SpecialAndCategoriesCounter(),
-                  ],
-                  const SizedBox(height: 40),
-                  // CategoryIconWithText(),
-                  const SizedBox(height: 30),
-                  Row(
-                    children: [
-                      Text(
-                        "New restaurants",
-                        style: largeText,
-                      ),
-                      const Spacer(),
-                      Slider(
-                        divisions: 10,
-                        value: valueKm,
-                        onChanged: (value) {
-                          setState(() {
-                            valueKm = value;
-                          });
-                        },
-                        min: 0,
-                        max: 10,
-                        activeColor: Colors.black,
-                        inactiveColor: Colors.black,
-                        label: "$valueKm Km",
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 30),
-                ],
+                // children: [
+                //   Row(
+                //     children: [
+                //       (size.width < 900)
+                //           ? Material(
+                //         color: Colors.transparent,
+                //         borderRadius: BorderRadius.circular(50),
+                //         child: InkWell(
+                //           onTap: () {},
+                //           borderRadius: BorderRadius.circular(50),
+                //           child: Container(
+                //             height: 45,
+                //             width: 45,
+                //             decoration: BoxDecoration(
+                //               color: Colors.black,
+                //               borderRadius: BorderRadius.circular(6.0),
+                //             ),
+                //             alignment: Alignment.center,
+                //             child: Icon(Icons.menu, color: Colors.white),
+                //           ),
+                //         ),
+                //       )
+                //           : Container(
+                //         width: 350,
+                //         child: const TextField(
+                //           style: TextStyle(fontSize: 12),
+                //           decoration: InputDecoration(
+                //             hintText: "Enter your search request...",
+                //             prefixIcon: Padding(
+                //               padding:
+                //               EdgeInsets.fromLTRB(10, 5, 0, 0),
+                //               child: FaIcon(
+                //                 FontAwesomeIcons.search,
+                //                 size: 16,
+                //               ),
+                //             ),
+                //           ),
+                //         ),
+                //       ),
+                //       Spacer(),
+                //       CustomCircleButton(
+                //         icon: FontAwesomeIcons.slidersH,
+                //         onTap: () {},
+                //       ),
+                //       const SizedBox(width: 10),
+                //       CustomTextButton(
+                //         onTap: () {},
+                //         text: "Go to Premium",
+                //       ),
+                //     ],
+                //   ),
+                //   const SizedBox(height: 50),
+                  // Row(
+                  //   children: [
+                  //     Column(
+                  //       crossAxisAlignment: CrossAxisAlignment.start,
+                  //       children: [
+                  //         Text(
+                  //           "Find the best place",
+                  //           style: largestText,
+                  //         ),
+                  //         RichText(
+                  //           text: TextSpan(
+                  //             style: GoogleFonts.montserrat(
+                  //               fontSize: 12,
+                  //               fontWeight: FontWeight.w500,
+                  //             ),
+                  //             children: [
+                  //               TextSpan(text: "249 restaurants, "),
+                  //               TextSpan(
+                  //                 text: "choose yours",
+                  //                 style: GoogleFonts.montserrat(
+                  //                   fontSize: 12,
+                  //                   color: Colors.grey.shade600,
+                  //                 ),
+                  //               ),
+                  //             ],
+                  //           ),
+                  //         )
+                  //       ],
+                  //     ),
+                  //     const Spacer(),
+                  //     if (size.width > 590) const SpecialAndCategoriesCounter(),
+                  //   ],
+                  // ),
+                  // if (size.width <= 590) ...[
+                  //   const SizedBox(height: 30),
+                  //   const SpecialAndCategoriesCounter(),
+                  // ],
+                  // const SizedBox(height: 40),
+                  // // CategoryIconWithText(),
+                  // const SizedBox(height: 30),
+                  // Row(
+                  //   children: [
+                  //     Text(
+                  //       "New restaurants",
+                  //       style: largeText,
+                  //     ),
+                  //     const Spacer(),
+                  //     Slider(
+                  //       divisions: 10,
+                  //       value: valueKm,
+                  //       onChanged: (value) {
+                  //         setState(() {
+                  //           valueKm = value;
+                  //         });
+                  //       },
+                  //       min: 0,
+                  //       max: 10,
+                  //       activeColor: Colors.black,
+                  //       inactiveColor: Colors.black,
+                  //       label: "$valueKm Km",
+                  //     ),
+                  //   ],
+                  // ),
+                //   const SizedBox(height: 30),
+                // ],
               ),
             ),
             // RestaurantList(

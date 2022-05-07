@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:online_shop/models/Account.dart';
+import 'package:online_shop/models/Role.dart';
 
 import '../Service/auth_service.dart';
 import '../Service/custom_text_button.dart';
 import '../constants.dart';
 import '../get_it.dart';
+import '../models/User.dart';
 import '../widgets/date_picker.dart';
 import '../widgets/form_title_and_field.dart';
 import 'login_screen.dart';
@@ -20,12 +23,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
   String? username;
   String? email;
   String? password;
+  String? confirmpassword;
   DateTime? date ;
+  String? image;
+  AccountModel? accountModel;
+  UserModel? userModel;
+  RoleModel? roleModel = RoleModel(id: 1, name: "user");
   String? selectedGender = 'male';
   DateTime selectedDate = DateTime.now();
   TextEditingController usernameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
   TextEditingController dateController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -155,7 +164,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               ),
                               title: const Text('Female'),
                             ),
-                              const SizedBox(height: 25),
+                              SizedBox(height: 25),
                         ],
                       ),
 
@@ -200,32 +209,60 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             return null;
                           },
                         ),
-                        const SizedBox(height: 30),
+                        FormTitleAndField(
+                          title: "Confirm Your Password:",
+                          textEditingController: confirmPasswordController,
+                          obscure: true,
+                          onChanged: (value) {
+                            setState(() {
+                              confirmpassword = value;
+                            });
+                          },
+                          onSaved: (value) {
+                            setState(() {
+                              confirmpassword = value;
+                            });
+                          },
+                          validate: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter confirm your password';
+                            }
+                            return null;
+                          },
+                        ),
+                        SizedBox(height: 30),
                         CustomTextButton(
                             text: "Sign Up",
                             onTap: () async {
-                              if (formKey.currentState!.validate()) {
-                                print(username);
-                                print(email);
-                                print(password);
-                                print(selectedDate);
-                                print(selectedGender);
-                                await authService.signUp(
-                                  password: password!,
-                                  name: username!,
-                                  gender: selectedGender!,
-                                  dateofbirth: selectedDate,
-                                  email: email!,
+                              if(identical(confirmpassword,password)){
+                                if (formKey.currentState!.validate()){
+                                  // userModel = UserModel(name: username!, gender: selectedGender!, dateofbirth: selectedDate, email: email!, image: image!, role: roleModel!);
+                                  // accountModel = AccountModel(password: password!, status: "1", user: userModel!);
+                                  AccountModel? rs = await authService.signUp3(
+                                    password: password!,
+                                    name: username!,
+                                    gender: selectedGender!,
+                                    dateofbirth: selectedDate,
+                                    email: email!,
+                                  );
+                                  if(rs != null) {
 
-                                );
-                                Navigator.push(context, MaterialPageRoute(
-                                  builder: (context) {
-                                    return SignInScreen();
-                                  },
-                                ));
-                              } else {
-                                print("not good");
+                                    Navigator.push(context, MaterialPageRoute(
+                                      builder: (context) {
+                                        return SignInScreen();
+                                      },
+                                    ));
+                                  }else{
+                                    showAlertDialogSignUp(context);
+                                  }
+                                } else {
+                                  print("not good");
+                                }
                               }
+                              else {
+                                showAlertDialog(context);
+                              }
+
                             }),
                         const SizedBox(height: 30),
                         Row(
@@ -276,5 +313,58 @@ class _SignUpScreenState extends State<SignUpScreen> {
         selectedDate = selected;
       });
     }
+  }
+
+  void showAlertDialog(BuildContext context) {
+    // Create button
+    Widget okButton = FlatButton(
+      child: Text("OK"),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+
+    // Create AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Alert"),
+      content: Text("Confirmation password is not correct."),
+      actions: [
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
+  void showAlertDialogSignUp(BuildContext context) {
+    // Create button
+    Widget okButton = FlatButton(
+      child: Text("OK"),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+
+    // Create AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Your email already exists."),
+      actions: [
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
   }
 }

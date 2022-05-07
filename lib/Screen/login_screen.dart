@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:online_shop/Screen/home_screen.dart';
+import 'package:online_shop/Screen/profile_screen/profile.dart';
 import 'package:online_shop/Screen/signup_screen.dart';
 import 'package:online_shop/get_it.dart';
 import '../Service/auth_service.dart';
@@ -8,7 +9,7 @@ import '../constants.dart';
 import '../Service/custom_text_button.dart';
 import '../widgets/form_title_and_field.dart';
 import '../models/home_app.dart';
-import '../models/user.dart';
+import '../models/User.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -18,10 +19,10 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
-  String? username;
+  String? email;
   String? password;
 
-  TextEditingController usernameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -64,16 +65,16 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                         const SizedBox(height: 50),
                         FormTitleAndField(
-                          title: "Username",
-                          textEditingController: usernameController,
+                          title: "Email",
+                          textEditingController: emailController,
                           onChanged: (value) {
                             setState(() {
-                              username = value;
+                              email = value;
                             });
                           },
                           onSaved: (value) {
                             setState(() {
-                              username = value;
+                              email = value;
                             });
                           },
                           validate: (value) {
@@ -119,15 +120,16 @@ class _SignInScreenState extends State<SignInScreen> {
                             onTap: () async {
                               if (formKey.currentState!.validate()) {
                                 UserModel? user = await authService.signIn2(
-                                  username: username!,
+                                  username: email!,
                                   password: password!,
                                 );
-                                if (user != null)
+                                if (user != null) {
                                   Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => HomeApp2(),
+                                        builder: (context) => ProfileScreen(),
                                       ));
+                                }
                               } else {
                                 print("Username/password incorrect");
                               }
